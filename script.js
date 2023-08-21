@@ -1,4 +1,3 @@
-
 const cautraloi = document.querySelectorAll('.cautraloi');
 const submitBtn = document.getElementById('submit');
 const quiz = document.getElementById('question');
@@ -12,7 +11,7 @@ function load_cauhoi(){
   submitBtn.disabled = true;
   remove_answer();
   
-  fetch('http://localhost/php_api/api/question/read.php')
+  fetch('http://localhost/RESTful-api-quiz.io/api/question/read.php')
   .then(res => res.json())
   .then(data => {
     // console.log(data);
@@ -26,7 +25,7 @@ function load_cauhoi(){
 
     // hiện thị câu hỏi và câu trả lời
     const get_cauhoi = data.question[cauhoihientai];
-    // console.log(get_cauhoi);
+    console.log(get_cauhoi);
 
     cauhoi.innerText = get_cauhoi.title;
     cautraloi_a.innerText = get_cauhoi.cau_a;
@@ -57,8 +56,8 @@ function get_answer(){
 
 // remove answer
 function remove_answer(){
-  cautraloi.forEach((answer)=>{
-    answer.checked = false;
+  cautraloi.forEach((cautraloi)=>{
+    cautraloi.checked = false;
   })
 }
 
@@ -72,7 +71,7 @@ cautraloi.forEach((elem) => {
 // sự kiện click submit
 submitBtn.addEventListener("click",()=>{
   const answer = get_answer();
-  // console.log(answer);
+  console.log(answer);
   if (answer) {
     if (answer === document.getElementById('caudung').value) {
       socaudung++;
@@ -88,8 +87,8 @@ submitBtn.addEventListener("click",()=>{
     const tongsocauhoi = document.getElementById('tongsocauhoi').value;
     quiz.innerHTML = `
       <h2>Bạn đã đúng ${socaudung}/${tongsocauhoi} câu hỏi.</h2>
-      <p>Số điểm đạt được là: ${diem}</p>
-      <button onclick="location.reload()">Làm lại bài</button>
+      <p style="font-size: 14px;">Số điểm đạt được là: ${diem}</p>
+      <button class="btn btn-warning" onclick="location.reload()">Làm lại bài</button>
     `
 
   }

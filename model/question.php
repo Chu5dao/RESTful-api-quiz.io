@@ -18,7 +18,7 @@ class Question{
 
   // Read data
   public function read(){
-    $query = "SELECT * FROM cauhoi ORDER BY id_cauhoi";
+    $query = "SELECT * FROM cauhoi ORDER BY id_cauhoi ASC";
     $statement = $this->conn->prepare($query);
     $statement->execute();
     return $statement;

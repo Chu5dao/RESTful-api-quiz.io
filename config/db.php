@@ -4,7 +4,7 @@ class db{
   private $servername = "localhost";
   private $username = "root";
   private $password = "";
-  private $db = "php_api"; // thay db ở đây
+  private $db = "question"; // thay db ở đây
   private $conn;
 
 
